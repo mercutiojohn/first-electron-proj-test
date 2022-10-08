@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/renderer/main.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1665192141748,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1665192141748,
+            "name": "Commit-0",
+            "content": "import Vue from 'vue'\nimport axios from 'axios'\n\nimport App from './App'\nimport router from './router'\nimport store from './store'\nimport ElementUI from 'element-ui';\nimport 'element-ui/lib/theme-chalk/index.css';\n\nVue.use(ElementUI);\n\nif (!process.env.IS_WEB) Vue.use(require('vue-electron'))\nVue.http = Vue.prototype.$http = axios\nVue.config.productionTip = false\n\n/* eslint-disable no-new */\nnew Vue({\n  components: { App },\n  router,\n  store,\n  template: '<App/>'\n}).$mount('#app')\n"
+        }
+    ]
+}
