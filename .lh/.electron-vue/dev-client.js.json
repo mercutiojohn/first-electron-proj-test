@@ -1,0 +1,18 @@
+{
+    "sourceFile": ".electron-vue/dev-client.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1664527770895,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1664527770895,
+            "name": "Commit-0",
+            "content": "const hotClient = require('webpack-hot-middleware/client?noInfo=true&reload=true')\n\nimport 'polyfill-object.fromentries';\n\nhotClient.subscribe(event => {\n  /**\n   * Reload browser when HTMLWebpackPlugin emits a new index.html\n   *\n   * Currently disabled until jantimon/html-webpack-plugin#680 is resolved.\n   * https://github.com/SimulatedGREG/electron-vue/issues/437\n   * https://github.com/jantimon/html-webpack-plugin/issues/680\n   */\n  // if (event.action === 'reload') {\n  //   window.location.reload()\n  // }\n\n  /**\n   * Notify `mainWindow` when `main` process is compiling,\n   * giving notice for an expected reload of the `electron` process\n   */\n  if (event.action === 'compiling') {\n    document.body.innerHTML += `\n      <style>\n        #dev-client {\n          background: #4fc08d;\n          border-radius: 4px;\n          bottom: 20px;\n          box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);\n          color: #fff;\n          font-family: 'Source Sans Pro', sans-serif;\n          left: 20px;\n          padding: 8px 12px;\n          position: absolute;\n        }\n      </style>\n\n      <div id=\"dev-client\">\n        Compiling Main Process...\n      </div>\n    `\n  }\n})\n"
+        }
+    ]
+}

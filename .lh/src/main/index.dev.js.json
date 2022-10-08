@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/main/index.dev.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1664527344157,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1664527386079,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n /* eslint-disable */\n \n // Install `electron-debug` with `devtron`\n require('electron-debug')({ showDevTools: true })\n-\n+import { BrowserWindow } from 'electron';\n // Install `vue-devtools`\n require('electron').app.on('ready', () => {\n   let installExtension = require('electron-devtools-installer')\n   // installExtension.default(installExtension.VUEJS_DEVTOOLS)\n"
+                },
+                {
+                    "date": 1664527509022,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,19 +8,22 @@\n /* eslint-disable */\n \n // Install `electron-debug` with `devtron`\n require('electron-debug')({ showDevTools: true })\n-import { BrowserWindow } from 'electron';\n+// import { BrowserWindow } from 'electron';\n // Install `vue-devtools`\n require('electron').app.on('ready', () => {\n-  let installExtension = require('electron-devtools-installer')\n+  if (process.env.NODE_ENV !== 'production') {\n+    require('vue-devtools').install()\n+  }\n+  // let installExtension = require('electron-devtools-installer')\n   // installExtension.default(installExtension.VUEJS_DEVTOOLS)\n   //   .then(() => {})\n   //   .catch(err => {\n   //     console.log('Unable to install `vue-devtools`: \\n', err)\n   //   })\n   //参考 https://www.cnblogs.com/wozho/p/10782654.html 和 https://github.com/SimulatedGREG/electron-vue/issues/242\n-  BrowserWindow.addDevToolsExtension('node_modules/vue-devtools/vender')  //手动加载vue-devtools，前提是 npm install vue-devtools --save-dev\n+  // BrowserWindow.addDevToolsExtension('node_modules/vue-devtools/vender')  //手动加载vue-devtools，前提是 npm install vue-devtools --save-dev\n })\n \n // Require `main` process to boot app\n require('./index')\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1664527344157,
+            "name": "Commit-0",
+            "content": "/**\n * This file is used specifically and only for development. It installs\n * `electron-debug` & `vue-devtools`. There shouldn't be any need to\n *  modify this file, but it can be used to extend your development\n *  environment.\n */\n\n/* eslint-disable */\n\n// Install `electron-debug` with `devtron`\nrequire('electron-debug')({ showDevTools: true })\n\n// Install `vue-devtools`\nrequire('electron').app.on('ready', () => {\n  let installExtension = require('electron-devtools-installer')\n  // installExtension.default(installExtension.VUEJS_DEVTOOLS)\n  //   .then(() => {})\n  //   .catch(err => {\n  //     console.log('Unable to install `vue-devtools`: \\n', err)\n  //   })\n  //参考 https://www.cnblogs.com/wozho/p/10782654.html 和 https://github.com/SimulatedGREG/electron-vue/issues/242\n  BrowserWindow.addDevToolsExtension('node_modules/vue-devtools/vender')  //手动加载vue-devtools，前提是 npm install vue-devtools --save-dev\n})\n\n// Require `main` process to boot app\nrequire('./index')"
+        }
+    ]
+}

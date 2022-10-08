@@ -1,0 +1,174 @@
+{
+    "sourceFile": "src/renderer/App.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 39,
+            "patches": [
+                {
+                    "date": 1664529868211,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1664529893313,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,6 +14,8 @@\n <style>\n   /* CSS */\n   .drag{\n     height:50px;\n+    width: 100%;\n+    -webkit-app-region:drag;\n   }\n </style>\n"
+                },
+                {
+                    "date": 1664529940021,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,6 +16,7 @@\n   .drag{\n     height:50px;\n     width: 100%;\n     -webkit-app-region:drag;\n+    -webkit-user-select:none;\n   }\n </style>\n"
+                },
+                {
+                    "date": 1664529986624,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \n <style>\n   /* CSS */\n   .drag{\n-    height:50px;\n+    height:33px;\n     width: 100%;\n     -webkit-app-region:drag;\n     -webkit-user-select:none;\n   }\n"
+                },
+                {
+                    "date": 1664529993680,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,9 @@\n <style>\n   /* CSS */\n   .drag{\n     height:33px;\n+    background: #000;\n     width: 100%;\n     -webkit-app-region:drag;\n     -webkit-user-select:none;\n   }\n"
+                },
+                {
+                    "date": 1664529999110,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n <style>\n   /* CSS */\n   .drag{\n     height:33px;\n-    background: #000;\n+    background: #fff;\n     width: 100%;\n     -webkit-app-region:drag;\n     -webkit-user-select:none;\n   }\n"
+                },
+                {
+                    "date": 1664530190934,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,10 +5,22 @@\n   </div>\n </template>\n \n <script>\n+import { ipcRenderer } from \"electron\"\n   export default {\n-    name: 'first-electron-proj'\n+    name: 'first-electron-proj',\n+    methods:{\n+      minimizeMin(){\n+        \n+      },\n+      maximizeMin(){\n+        \n+      },\n+      closeMin(){\n+        \n+      },\n+    }\n   }\n </script>\n \n <style>\n@@ -19,5 +31,6 @@\n     width: 100%;\n     -webkit-app-region:drag;\n     -webkit-user-select:none;\n   }\n+  \n </style>\n"
+                },
+                {
+                    "date": 1664530229136,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,15 +10,15 @@\n   export default {\n     name: 'first-electron-proj',\n     methods:{\n       minimizeMin(){\n-        \n+        ipcRenderer.send('window-min')\n       },\n       maximizeMin(){\n-        \n+        ipcRenderer.send('window-max')\n       },\n       closeMin(){\n-        \n+        ipcRenderer.send('window-close')\n       },\n     }\n   }\n </script>\n"
+                },
+                {
+                    "date": 1665189744422,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,12 @@\n <template>\n   <div id=\"app\">\n     <div class=\"drag\"></div>\n+    <div class=\"func\">\n+      <div class=\"minimize\" @click=\"minimizeMin\"></div>\n+      <div class=\"maximize\" @click=\"maximizeMin\"></div>\n+      <div class=\"close\" @click=\"closeMin\"></div>\n+    </div>\n     <router-view></router-view>\n   </div>\n </template>\n \n"
+                },
+                {
+                    "date": 1665190269638,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,13 @@\n <template>\n   <div id=\"app\">\n-    <div class=\"drag\"></div>\n-    <div class=\"func\">\n-      <div class=\"minimize\" @click=\"minimizeMin\"></div>\n-      <div class=\"maximize\" @click=\"maximizeMin\"></div>\n-      <div class=\"close\" @click=\"closeMin\"></div>\n+    <div class=\"head-bar\">\n+      <div class=\"drag\"></div>\n+      <div class=\"func\">\n+        <div class=\"minimize\" @click=\"minimizeMin\"></div>\n+        <div class=\"maximize\" @click=\"maximizeMin\"></div>\n+        <div class=\"close\" @click=\"closeMin\"></div>\n+      </div>\n     </div>\n     <router-view></router-view>\n   </div>\n </template>\n@@ -29,13 +31,18 @@\n </script>\n \n <style>\n   /* CSS */\n-  .drag{\n+  .head-bar{\n     height:33px;\n     background: #fff;\n     width: 100%;\n     -webkit-app-region:drag;\n     -webkit-user-select:none;\n+    display: flex;\n+    position: sticky;\n   }\n+  .drag{\n+    \n+  }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665190274912,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,8 +39,9 @@\n     -webkit-app-region:drag;\n     -webkit-user-select:none;\n     display: flex;\n     position: sticky;\n+    top:0;\n   }\n   .drag{\n     \n   }\n"
+                },
+                {
+                    "date": 1665190291227,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,10 +40,12 @@\n     -webkit-user-select:none;\n     display: flex;\n     position: sticky;\n     top:0;\n+    left: 0;\n   }\n   .drag{\n-    \n+    width: 10px;\n+    background: #000;\n   }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665190305195,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,9 @@\n     top:0;\n     left: 0;\n   }\n   .drag{\n-    width: 10px;\n+    width: calc(100vw - 100px);\n     background: #000;\n   }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665190328390,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -46,6 +46,9 @@\n   .drag{\n     width: calc(100vw - 100px);\n     background: #000;\n   }\n+  .func{\n+    width: 100px;\n+  }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665190334000,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,7 +48,8 @@\n     background: #000;\n   }\n   .func{\n     width: 100px;\n+    background: #000;\n   }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665190345472,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,7 +49,8 @@\n   }\n   .func{\n     width: 100px;\n     background: #000;\n+    display: flex;\n   }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665190402342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,11 +2,11 @@\n   <div id=\"app\">\n     <div class=\"head-bar\">\n       <div class=\"drag\"></div>\n       <div class=\"func\">\n-        <div class=\"minimize\" @click=\"minimizeMin\"></div>\n-        <div class=\"maximize\" @click=\"maximizeMin\"></div>\n-        <div class=\"close\" @click=\"closeMin\"></div>\n+        <div class=\"window-btn minimize\" @click=\"minimizeMin\"></div>\n+        <div class=\"window-btn maximize\" @click=\"maximizeMin\"></div>\n+        <div class=\"window-btn close\" @click=\"closeMin\"></div>\n       </div>\n     </div>\n     <router-view></router-view>\n   </div>\n@@ -51,6 +51,7 @@\n     width: 100px;\n     background: #000;\n     display: flex;\n   }\n+  .func window-btn \n   \n </style>\n"
+                },
+                {
+                    "date": 1665190421890,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,7 +51,9 @@\n     width: 100px;\n     background: #000;\n     display: flex;\n   }\n-  .func window-btn \n+  .func .window-btn{\n+    width: calc(100px / 3);\n+  }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665190429437,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,12 +48,12 @@\n     background: #000;\n   }\n   .func{\n     width: 100px;\n-    background: #000;\n     display: flex;\n   }\n   .func .window-btn{\n+    background: #000;\n     width: calc(100px / 3);\n   }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665190442217,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,16 +44,16 @@\n     left: 0;\n   }\n   .drag{\n     width: calc(100vw - 100px);\n-    background: #000;\n   }\n   .func{\n     width: 100px;\n     display: flex;\n   }\n   .func .window-btn{\n     background: #000;\n     width: calc(100px / 3);\n+    height: 100%;\n   }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665190456517,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,8 +51,9 @@\n     display: flex;\n   }\n   .func .window-btn{\n     background: #000;\n+    border: 1px solid #fff;\n     width: calc(100px / 3);\n     height: 100%;\n   }\n   \n"
+                },
+                {
+                    "date": 1665190503138,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,9 +38,9 @@\n     width: 100%;\n     -webkit-app-region:drag;\n     -webkit-user-select:none;\n     display: flex;\n-    position: sticky;\n+    position: fixed;\n     top:0;\n     left: 0;\n   }\n   .drag{\n"
+                },
+                {
+                    "date": 1665190550021,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,14 +17,17 @@\n   export default {\n     name: 'first-electron-proj',\n     methods:{\n       minimizeMin(){\n+        console.log(\"minimize\");\n         ipcRenderer.send('window-min')\n       },\n       maximizeMin(){\n+        console.log(\"maximize\");\n         ipcRenderer.send('window-max')\n       },\n       closeMin(){\n+        console.log(\"close\");\n         ipcRenderer.send('window-close')\n       },\n     }\n   }\n"
+                },
+                {
+                    "date": 1665190571148,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,17 +38,17 @@\n   .head-bar{\n     height:33px;\n     background: #fff;\n     width: 100%;\n-    -webkit-app-region:drag;\n-    -webkit-user-select:none;\n     display: flex;\n     position: fixed;\n     top:0;\n     left: 0;\n   }\n   .drag{\n     width: calc(100vw - 100px);\n+    -webkit-app-region:drag;\n+    -webkit-user-select:none;\n   }\n   .func{\n     width: 100px;\n     display: flex;\n"
+                },
+                {
+                    "date": 1665191004512,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,18 +43,18 @@\n     position: fixed;\n     top:0;\n     left: 0;\n   }\n-  .drag{\n+  .head-bar .drag{\n     width: calc(100vw - 100px);\n     -webkit-app-region:drag;\n     -webkit-user-select:none;\n   }\n-  .func{\n+  .head-bar .func{\n     width: 100px;\n     display: flex;\n   }\n-  .func .window-btn{\n+  .head-bar .func .window-btn{\n     background: #000;\n     border: 1px solid #fff;\n     width: calc(100px / 3);\n     height: 100%;\n"
+                },
+                {
+                    "date": 1665191026203,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,6 +58,9 @@\n     border: 1px solid #fff;\n     width: calc(100px / 3);\n     height: 100%;\n   }\n+  .head-bar .func .window-btn:hover{\n+    background: #00000023;\n+  }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665191038246,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,7 +60,8 @@\n     height: 100%;\n   }\n   .head-bar .func .window-btn:hover{\n     background: #00000023;\n+    transition: all .2s ease;\n   }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665191046263,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,9 +53,9 @@\n     width: 100px;\n     display: flex;\n   }\n   .head-bar .func .window-btn{\n-    background: #000;\n+    /* background: #000; */\n     border: 1px solid #fff;\n     width: calc(100px / 3);\n     height: 100%;\n   }\n"
+                },
+                {
+                    "date": 1665191054499,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -57,8 +57,9 @@\n     /* background: #000; */\n     border: 1px solid #fff;\n     width: calc(100px / 3);\n     height: 100%;\n+    cursor: pointer;\n   }\n   .head-bar .func .window-btn:hover{\n     background: #00000023;\n     transition: all .2s ease;\n"
+                },
+                {
+                    "date": 1665191062185,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,8 +61,8 @@\n     cursor: pointer;\n   }\n   .head-bar .func .window-btn:hover{\n     background: #00000023;\n-    transition: all .2s ease;\n+    /* transition: all .2s ease; */\n   }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665191072971,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,9 +60,9 @@\n     height: 100%;\n     cursor: pointer;\n   }\n   .head-bar .func .window-btn:hover{\n-    background: #00000023;\n+    background: #000000;\n     /* transition: all .2s ease; */\n   }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665191083799,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,9 +60,9 @@\n     height: 100%;\n     cursor: pointer;\n   }\n   .head-bar .func .window-btn:hover{\n-    background: #000000;\n-    /* transition: all .2s ease; */\n+    background: #00000056;\n+    transition: all .2s ease;\n   }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665191089757,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,9 +60,9 @@\n     height: 100%;\n     cursor: pointer;\n   }\n   .head-bar .func .window-btn:hover{\n-    background: #00000056;\n+    background: #000000;\n     transition: all .2s ease;\n   }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665191095940,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,8 +61,8 @@\n     cursor: pointer;\n   }\n   .head-bar .func .window-btn:hover{\n     background: #000000;\n-    transition: all .2s ease;\n+    transition: all .5s ease;\n   }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665191101137,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,8 +61,8 @@\n     cursor: pointer;\n   }\n   .head-bar .func .window-btn:hover{\n     background: #000000;\n-    transition: all .5s ease;\n+    transition: all .2s ease;\n   }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665191110089,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,14 +44,14 @@\n     top:0;\n     left: 0;\n   }\n   .head-bar .drag{\n-    width: calc(100vw - 100px);\n+    width: calc(100vw - 130px);\n     -webkit-app-region:drag;\n     -webkit-user-select:none;\n   }\n   .head-bar .func{\n-    width: 100px;\n+    width: 130px;\n     display: flex;\n   }\n   .head-bar .func .window-btn{\n     /* background: #000; */\n"
+                },
+                {
+                    "date": 1665191118525,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -55,9 +55,9 @@\n   }\n   .head-bar .func .window-btn{\n     /* background: #000; */\n     border: 1px solid #fff;\n-    width: calc(100px / 3);\n+    width: calc(130px / 3);\n     height: 100%;\n     cursor: pointer;\n   }\n   .head-bar .func .window-btn:hover{\n"
+                },
+                {
+                    "date": 1665191156008,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,11 +58,14 @@\n     border: 1px solid #fff;\n     width: calc(130px / 3);\n     height: 100%;\n     cursor: pointer;\n+    transition: all .2s ease;\n   }\n   .head-bar .func .window-btn:hover{\n-    background: #000000;\n-    transition: all .2s ease;\n+    background: #cecece;\n   }\n+  .head-bar .func .window-btn:active{\n+    background: #646464;\n+  }\n   \n </style>\n"
+                },
+                {
+                    "date": 1665191174445,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,9 +54,9 @@\n     display: flex;\n   }\n   .head-bar .func .window-btn{\n     /* background: #000; */\n-    border: 1px solid #fff;\n+    border: 1px solid #000;\n     width: calc(130px / 3);\n     height: 100%;\n     cursor: pointer;\n     transition: all .2s ease;\n"
+                },
+                {
+                    "date": 1665191393778,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,9 +36,9 @@\n <style>\n   /* CSS */\n   .head-bar{\n     height:33px;\n-    background: #fff;\n+    /* background: #fff; */\n     width: 100%;\n     display: flex;\n     position: fixed;\n     top:0;\n"
+                }
+            ],
+            "date": 1664529868211,
+            "name": "Commit-0",
+            "content": "<template>\n  <div id=\"app\">\n    <div class=\"drag\"></div>\n    <router-view></router-view>\n  </div>\n</template>\n\n<script>\n  export default {\n    name: 'first-electron-proj'\n  }\n</script>\n\n<style>\n  /* CSS */\n  .drag{\n    height:50px;\n  }\n</style>\n"
+        }
+    ]
+}
