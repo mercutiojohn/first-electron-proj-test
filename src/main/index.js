@@ -60,19 +60,26 @@ function createWindow () {
    * Initial window options
    */
   mainWindow = new MicaBrowserWindow({
+    width: 1000,
     height: 563,
     useContentSize: true,
     effect: EFFECT.BACKGROUND.MICA,
+    // effect: EFFECT.BACKGROUND.MICA,
     theme: PARAMS.THEME.LIGHT,
-    width: 1000,
-    // autoHideMenuBar: true,
-    frame:false,
+    autoHideMenuBar: true,
+    // frame:false,
+    show:false
     // transparent:true
   })
 
-  mainWindow.setVisualEffect(EFFECT.CORNER, 10);
+  // mainWindow.setVisualEffect(EFFECT.CORNER, 10);
+  // mainWindow.setVisualEffect(EFFECT.CORNER, PARAMS.CORNER.ROUNDSMALL);
 
   mainWindow.loadURL(winURL)
+
+  mainWindow.webContents.once('dom-ready', () => {
+    mainWindow.show();
+  });
 
   ipcMain.on('window-min',()=>{
     mainWindow.minimize();
@@ -88,8 +95,8 @@ function createWindow () {
     mainWindow.close();
   })
 }
-
 app.on('ready', createWindow)
+
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {

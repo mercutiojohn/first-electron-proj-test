@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 26,
+            "activePatchIndex": 43,
             "patches": [
                 {
                     "date": 1664529723430,
@@ -112,6 +112,74 @@
                 {
                     "date": 1665195290495,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,16 +62,16 @@\n   mainWindow = new MicaBrowserWindow({\n     height: 563,\n     useContentSize: true,\n     effect: EFFECT.BACKGROUND.MICA,\n-    theme: PARAMS.THEME.DARK,\n+    theme: PARAMS.THEME.LIGHT,\n     width: 1000,\n     // autoHideMenuBar: true,\n     frame:false,\n     // transparent:true\n   })\n \n-  mainWindow.setVisualEffect(EFFECT.CORNER, PARAMS.CORNER.ROUNDSMALL);\n+  mainWindow.setVisualEffect(EFFECT.CORNER, 10);\n \n   mainWindow.loadURL(winURL)\n \n   ipcMain.on('window-min',()=>{\n"
+                },
+                {
+                    "date": 1665195350159,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -65,9 +65,9 @@\n     effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.LIGHT,\n     width: 1000,\n     // autoHideMenuBar: true,\n-    frame:false,\n+    // frame:false,\n     // transparent:true\n   })\n \n   mainWindow.setVisualEffect(EFFECT.CORNER, 10);\n"
+                },
+                {
+                    "date": 1665195358983,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -65,9 +65,9 @@\n     effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.LIGHT,\n     width: 1000,\n     // autoHideMenuBar: true,\n-    // frame:false,\n+    frame:false,\n     // transparent:true\n   })\n \n   mainWindow.setVisualEffect(EFFECT.CORNER, 10);\n"
+                },
+                {
+                    "date": 1665195389218,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -69,9 +69,10 @@\n     frame:false,\n     // transparent:true\n   })\n \n-  mainWindow.setVisualEffect(EFFECT.CORNER, 10);\n+  // mainWindow.setVisualEffect(EFFECT.CORNER, 10);\n+  // mainWindow.setVisualEffect(EFFECT.CORNER, PARAMS.CORNER.ROUNDSMALL);\n \n   mainWindow.loadURL(winURL)\n \n   ipcMain.on('window-min',()=>{\n"
+                },
+                {
+                    "date": 1665195402005,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,13 +59,13 @@\n   /**\n    * Initial window options\n    */\n   mainWindow = new MicaBrowserWindow({\n+    width: 1000,\n     height: 563,\n     useContentSize: true,\n     effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.LIGHT,\n-    width: 1000,\n     // autoHideMenuBar: true,\n     frame:false,\n     // transparent:true\n   })\n"
+                },
+                {
+                    "date": 1665195422366,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,10 +64,10 @@\n     height: 563,\n     useContentSize: true,\n     effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.LIGHT,\n-    // autoHideMenuBar: true,\n-    frame:false,\n+    autoHideMenuBar: true,\n+    // frame:false,\n     // transparent:true\n   })\n \n   // mainWindow.setVisualEffect(EFFECT.CORNER, 10);\n"
+                },
+                {
+                    "date": 1665195461858,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -66,9 +66,9 @@\n     effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.LIGHT,\n     autoHideMenuBar: true,\n     // frame:false,\n-    // transparent:true\n+    transparent:true\n   })\n \n   // mainWindow.setVisualEffect(EFFECT.CORNER, 10);\n   // mainWindow.setVisualEffect(EFFECT.CORNER, PARAMS.CORNER.ROUNDSMALL);\n"
+                },
+                {
+                    "date": 1665195471336,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -65,10 +65,10 @@\n     useContentSize: true,\n     effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.LIGHT,\n     autoHideMenuBar: true,\n-    // frame:false,\n-    transparent:true\n+    frame:false,\n+    // transparent:true\n   })\n \n   // mainWindow.setVisualEffect(EFFECT.CORNER, 10);\n   // mainWindow.setVisualEffect(EFFECT.CORNER, PARAMS.CORNER.ROUNDSMALL);\n"
+                },
+                {
+                    "date": 1665195479009,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -65,9 +65,9 @@\n     useContentSize: true,\n     effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.LIGHT,\n     autoHideMenuBar: true,\n-    frame:false,\n+    // frame:false,\n     // transparent:true\n   })\n \n   // mainWindow.setVisualEffect(EFFECT.CORNER, 10);\n"
+                },
+                {
+                    "date": 1665195523733,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,10 +64,10 @@\n     height: 563,\n     useContentSize: true,\n     effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.LIGHT,\n-    autoHideMenuBar: true,\n-    // frame:false,\n+    // autoHideMenuBar: true,\n+    frame:false,\n     // transparent:true\n   })\n \n   // mainWindow.setVisualEffect(EFFECT.CORNER, 10);\n"
+                },
+                {
+                    "date": 1665195635924,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -66,8 +66,9 @@\n     effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.LIGHT,\n     // autoHideMenuBar: true,\n     frame:false,\n+    show:false\n     // transparent:true\n   })\n \n   // mainWindow.setVisualEffect(EFFECT.CORNER, 10);\n"
+                },
+                {
+                    "date": 1665195700531,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,8 +75,12 @@\n   // mainWindow.setVisualEffect(EFFECT.CORNER, PARAMS.CORNER.ROUNDSMALL);\n \n   mainWindow.loadURL(winURL)\n \n+  mainWindow.webContents.once('dom-ready', () => {\n+    mainWindow.show();\n+  });\n+\n   ipcMain.on('window-min',()=>{\n     mainWindow.minimize();\n   })\n   ipcMain.on('window-max', () => {\n@@ -89,11 +93,11 @@\n   ipcMain.on('window-close', () => {\n     mainWindow.close();\n   })\n }\n-\n app.on('ready', createWindow)\n \n+\n app.on('window-all-closed', () => {\n   if (process.platform !== 'darwin') {\n     app.quit()\n   }\n"
+                },
+                {
+                    "date": 1665195728572,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,9 +62,9 @@\n   mainWindow = new MicaBrowserWindow({\n     width: 1000,\n     height: 563,\n     useContentSize: true,\n-    effect: EFFECT.BACKGROUND.MICA,\n+    effect: EFFECT.BACKGROUND.AUTO,\n     theme: PARAMS.THEME.LIGHT,\n     // autoHideMenuBar: true,\n     frame:false,\n     show:false\n"
+                },
+                {
+                    "date": 1665195765641,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,9 +62,10 @@\n   mainWindow = new MicaBrowserWindow({\n     width: 1000,\n     height: 563,\n     useContentSize: true,\n-    effect: EFFECT.BACKGROUND.AUTO,\n+    effect: EFFECT.BACKGROUND.NONE,\n+    // effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.LIGHT,\n     // autoHideMenuBar: true,\n     frame:false,\n     show:false\n"
+                },
+                {
+                    "date": 1665195780805,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,9 +62,9 @@\n   mainWindow = new MicaBrowserWindow({\n     width: 1000,\n     height: 563,\n     useContentSize: true,\n-    effect: EFFECT.BACKGROUND.NONE,\n+    effect: EFFECT.BACKGROUND.ACRYLIC,\n     // effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.LIGHT,\n     // autoHideMenuBar: true,\n     frame:false,\n"
+                },
+                {
+                    "date": 1665195793980,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,9 +62,9 @@\n   mainWindow = new MicaBrowserWindow({\n     width: 1000,\n     height: 563,\n     useContentSize: true,\n-    effect: EFFECT.BACKGROUND.ACRYLIC,\n+    effect: EFFECT.BACKGROUND.TABBED_MICA,\n     // effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.LIGHT,\n     // autoHideMenuBar: true,\n     frame:false,\n"
+                },
+                {
+                    "date": 1665195803062,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,9 +62,9 @@\n   mainWindow = new MicaBrowserWindow({\n     width: 1000,\n     height: 563,\n     useContentSize: true,\n-    effect: EFFECT.BACKGROUND.TABBED_MICA,\n+    effect: EFFECT.BACKGROUND.MICA,\n     // effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.LIGHT,\n     // autoHideMenuBar: true,\n     frame:false,\n"
+                },
+                {
+                    "date": 1665195840442,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -65,10 +65,10 @@\n     useContentSize: true,\n     effect: EFFECT.BACKGROUND.MICA,\n     // effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.LIGHT,\n-    // autoHideMenuBar: true,\n-    frame:false,\n+    autoHideMenuBar: true,\n+    // frame:false,\n     show:false\n     // transparent:true\n   })\n \n"
                 }
             ],
             "date": 1664529723430,
