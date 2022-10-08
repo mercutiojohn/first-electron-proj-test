@@ -1,4 +1,5 @@
 import { app, BrowserWindow, ipcMain } from 'electron'
+import { EFFECT, PARAMS, MicaBrowserWindow } from 'mica-electron'
 import '../renderer/store'
 
 /**
@@ -9,6 +10,46 @@ if (process.env.NODE_ENV !== 'development') {
   global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
 }
 
+// const EFFECT = {
+//   BACKGROUND: {
+//     AUTO: 0,
+//     NONE: 1,
+//     ACRYLIC: 3,         // Acrylic
+//     MICA: 2,            // Mica
+//     TABBED_MICA: 4      // Mica tabbed
+//   },
+//   CORNER: 5,
+//   BORDER_COLOR: 6,
+//   CAPTION_COLOR: 7,
+//   TEXT_COLOR: 8
+// }
+
+// const PARAMS = {
+//   THEME: {
+//     AUTO: 'auto',	// select theme by the windows theme
+//     DARK: 'dark',	// select the dark theme
+//     LIGHT: 'light',	// select the white theme
+//   },
+//   CORNER: {
+//     DEFAULT: 0,
+//     DONOTROUND: 1,
+//     ROUND: 2,
+//     ROUNDSMALL: 3
+//   },
+//   COLOR: {
+//     RED: 0x000000FF,
+//     GREEN: 0x0000FF00,
+//     BLUE: 0x00FF0000,
+//     BLACK: 0x00000000,
+//     WHITE: 0x00FFFFFF,
+//     FROM_RGB: (r, g, b) => {
+//       return r + (g << 8) + (b << 16);
+//     }
+//   }
+// }
+
+app.commandLine.appendSwitch("enable-transparent-visuals")
+
 let mainWindow
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
@@ -18,13 +59,18 @@ function createWindow () {
   /**
    * Initial window options
    */
-  mainWindow = new BrowserWindow({
+  mainWindow = new MicaBrowserWindow({
     height: 563,
     useContentSize: true,
+    effect: EFFECT.BACKGROUND.MICA,
+    theme: PARAMS.THEME.LIGHT,
     width: 1000,
+    // autoHideMenuBar: true,
     frame:false,
     // transparent:true
   })
+
+  mainWindow.setVisualEffect(EFFECT.CORNER, 10);
 
   mainWindow.loadURL(winURL)
 

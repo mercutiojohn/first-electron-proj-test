@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 13,
+            "activePatchIndex": 26,
             "patches": [
                 {
                     "date": 1664529723430,
@@ -60,6 +60,58 @@
                 {
                     "date": 1665190959705,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,13 @@\n   ipcMain.on('window-min',()=>{\n     mainWindow.minimize();\n   })\n   ipcMain.on('window-max', () => {\n-    mainWindow.maximize();\n+    if(mainWindow.isMaximized()){\n+      mainWindow.restore();\n+    }else{\n+      mainWindow.maximize();\n+    }\n   })\n   ipcMain.on('window-close', () => {\n     mainWindow.close();\n   })\n"
+                },
+                {
+                    "date": 1665194946169,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n import { app, BrowserWindow, ipcMain } from 'electron'\n+import { EFFECT, PARAMS, MicaBrowserWindow } from 'mica-electron'\n import '../renderer/store'\n \n /**\n  * Set `__static` path to static files in production\n@@ -8,8 +9,10 @@\n if (process.env.NODE_ENV !== 'development') {\n   global.__static = require('path').join(__dirname, '/static').replace(/\\\\/g, '\\\\\\\\')\n }\n \n+electron.app.commandLine.appendSwitch(\"enable-transparent-visuals\")\n+\n let mainWindow\n const winURL = process.env.NODE_ENV === 'development'\n   ? `http://localhost:9080`\n   : `file://${__dirname}/index.html`\n"
+                },
+                {
+                    "date": 1665195008100,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,8 +9,46 @@\n if (process.env.NODE_ENV !== 'development') {\n   global.__static = require('path').join(__dirname, '/static').replace(/\\\\/g, '\\\\\\\\')\n }\n \n+const EFFECT = {\n+  BACKGROUND: {\n+    AUTO: 0,\n+    NONE: 1,\n+    ACRYLIC: 3,         // Acrylic\n+    MICA: 2,            // Mica\n+    TABBED_MICA: 4      // Mica tabbed\n+  },\n+  CORNER: 5,\n+  BORDER_COLOR: 6,\n+  CAPTION_COLOR: 7,\n+  TEXT_COLOR: 8\n+}\n+\n+const PARAMS = {\n+  THEME: {\n+    AUTO: 'auto',\t// select theme by the windows theme\n+    DARK: 'dark',\t// select the dark theme\n+    LIGHT: 'light',\t// select the white theme\n+  },\n+  CORNER: {\n+    DEFAULT: 0,\n+    DONOTROUND: 1,\n+    ROUND: 2,\n+    ROUNDSMALL: 3\n+  },\n+  COLOR: {\n+    RED: 0x000000FF,\n+    GREEN: 0x0000FF00,\n+    BLUE: 0x00FF0000,\n+    BLACK: 0x00000000,\n+    WHITE: 0x00FFFFFF,\n+    FROM_RGB: (r, g, b) => {\n+      return r + (g << 8) + (b << 16);\n+    }\n+  }\n+}\n+\n electron.app.commandLine.appendSwitch(\"enable-transparent-visuals\")\n \n let mainWindow\n const winURL = process.env.NODE_ENV === 'development'\n@@ -20,11 +58,13 @@\n function createWindow () {\n   /**\n    * Initial window options\n    */\n-  mainWindow = new BrowserWindow({\n+  mainWindow = new MicaBrowserWindow({\n     height: 563,\n     useContentSize: true,\n+    effect: EFFECT.BACKGROUND.MICA,\n+    theme: PARAMS.THEME.DARK,\n     width: 1000,\n     frame:false,\n     // transparent:true\n   })\n"
+                },
+                {
+                    "date": 1665195036727,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,9 +64,11 @@\n     useContentSize: true,\n     effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.DARK,\n     width: 1000,\n+    autoHideMenuBar: true,\n     frame:false,\n+    show: false\n     // transparent:true\n   })\n \n   mainWindow.loadURL(winURL)\n"
+                },
+                {
+                    "date": 1665195086826,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,14 +64,15 @@\n     useContentSize: true,\n     effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.DARK,\n     width: 1000,\n-    autoHideMenuBar: true,\n-    frame:false,\n-    show: false\n+    // autoHideMenuBar: true,\n+    frame:false\n     // transparent:true\n   })\n \n+  win.setVisualEffect(EFFECT.CORNER, PARAMS.CORNER.ROUNDSMALL);\n+\n   mainWindow.loadURL(winURL)\n \n   ipcMain.on('window-min',()=>{\n     mainWindow.minimize();\n"
+                },
+                {
+                    "date": 1665195115754,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import { app, BrowserWindow, ipcMain } from 'electron'\n-import { EFFECT, PARAMS, MicaBrowserWindow } from 'mica-electron'\n+import { MicaBrowserWindow } from 'mica-electron'\n import '../renderer/store'\n \n /**\n  * Set `__static` path to static files in production\n@@ -65,10 +65,10 @@\n     effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.DARK,\n     width: 1000,\n     // autoHideMenuBar: true,\n-    frame:false\n-    // transparent:true\n+    frame:false,\n+    transparent:true\n   })\n \n   win.setVisualEffect(EFFECT.CORNER, PARAMS.CORNER.ROUNDSMALL);\n \n"
+                },
+                {
+                    "date": 1665195122159,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import { app, BrowserWindow, ipcMain } from 'electron'\n-import { MicaBrowserWindow } from 'mica-electron'\n+import { EFFECT, PARAMS, MicaBrowserWindow } from 'mica-electron'\n import '../renderer/store'\n \n /**\n  * Set `__static` path to static files in production\n"
+                },
+                {
+                    "date": 1665195129253,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,45 +9,45 @@\n if (process.env.NODE_ENV !== 'development') {\n   global.__static = require('path').join(__dirname, '/static').replace(/\\\\/g, '\\\\\\\\')\n }\n \n-const EFFECT = {\n-  BACKGROUND: {\n-    AUTO: 0,\n-    NONE: 1,\n-    ACRYLIC: 3,         // Acrylic\n-    MICA: 2,            // Mica\n-    TABBED_MICA: 4      // Mica tabbed\n-  },\n-  CORNER: 5,\n-  BORDER_COLOR: 6,\n-  CAPTION_COLOR: 7,\n-  TEXT_COLOR: 8\n-}\n+// const EFFECT = {\n+//   BACKGROUND: {\n+//     AUTO: 0,\n+//     NONE: 1,\n+//     ACRYLIC: 3,         // Acrylic\n+//     MICA: 2,            // Mica\n+//     TABBED_MICA: 4      // Mica tabbed\n+//   },\n+//   CORNER: 5,\n+//   BORDER_COLOR: 6,\n+//   CAPTION_COLOR: 7,\n+//   TEXT_COLOR: 8\n+// }\n \n-const PARAMS = {\n-  THEME: {\n-    AUTO: 'auto',\t// select theme by the windows theme\n-    DARK: 'dark',\t// select the dark theme\n-    LIGHT: 'light',\t// select the white theme\n-  },\n-  CORNER: {\n-    DEFAULT: 0,\n-    DONOTROUND: 1,\n-    ROUND: 2,\n-    ROUNDSMALL: 3\n-  },\n-  COLOR: {\n-    RED: 0x000000FF,\n-    GREEN: 0x0000FF00,\n-    BLUE: 0x00FF0000,\n-    BLACK: 0x00000000,\n-    WHITE: 0x00FFFFFF,\n-    FROM_RGB: (r, g, b) => {\n-      return r + (g << 8) + (b << 16);\n-    }\n-  }\n-}\n+// const PARAMS = {\n+//   THEME: {\n+//     AUTO: 'auto',\t// select theme by the windows theme\n+//     DARK: 'dark',\t// select the dark theme\n+//     LIGHT: 'light',\t// select the white theme\n+//   },\n+//   CORNER: {\n+//     DEFAULT: 0,\n+//     DONOTROUND: 1,\n+//     ROUND: 2,\n+//     ROUNDSMALL: 3\n+//   },\n+//   COLOR: {\n+//     RED: 0x000000FF,\n+//     GREEN: 0x0000FF00,\n+//     BLUE: 0x00FF0000,\n+//     BLACK: 0x00000000,\n+//     WHITE: 0x00FFFFFF,\n+//     FROM_RGB: (r, g, b) => {\n+//       return r + (g << 8) + (b << 16);\n+//     }\n+//   }\n+// }\n \n electron.app.commandLine.appendSwitch(\"enable-transparent-visuals\")\n \n let mainWindow\n"
+                },
+                {
+                    "date": 1665195151152,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,9 +47,9 @@\n //     }\n //   }\n // }\n \n-electron.app.commandLine.appendSwitch(\"enable-transparent-visuals\")\n+app.commandLine.appendSwitch(\"enable-transparent-visuals\")\n \n let mainWindow\n const winURL = process.env.NODE_ENV === 'development'\n   ? `http://localhost:9080`\n"
+                },
+                {
+                    "date": 1665195171325,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -69,9 +69,9 @@\n     frame:false,\n     transparent:true\n   })\n \n-  win.setVisualEffect(EFFECT.CORNER, PARAMS.CORNER.ROUNDSMALL);\n+  mainWindow.setVisualEffect(EFFECT.CORNER, PARAMS.CORNER.ROUNDSMALL);\n \n   mainWindow.loadURL(winURL)\n \n   ipcMain.on('window-min',()=>{\n"
+                },
+                {
+                    "date": 1665195221966,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -66,9 +66,9 @@\n     theme: PARAMS.THEME.DARK,\n     width: 1000,\n     // autoHideMenuBar: true,\n     frame:false,\n-    transparent:true\n+    // transparent:true\n   })\n \n   mainWindow.setVisualEffect(EFFECT.CORNER, PARAMS.CORNER.ROUNDSMALL);\n \n"
+                },
+                {
+                    "date": 1665195242956,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,9 +61,9 @@\n    */\n   mainWindow = new MicaBrowserWindow({\n     height: 563,\n     useContentSize: true,\n-    effect: EFFECT.BACKGROUND.MICA,\n+    effect: EFFECT.BACKGROUND.ACRYLIC,\n     theme: PARAMS.THEME.DARK,\n     width: 1000,\n     // autoHideMenuBar: true,\n     frame:false,\n"
+                },
+                {
+                    "date": 1665195265397,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,9 +61,9 @@\n    */\n   mainWindow = new MicaBrowserWindow({\n     height: 563,\n     useContentSize: true,\n-    effect: EFFECT.BACKGROUND.ACRYLIC,\n+    effect: EFFECT.BACKGROUND.MICA,\n     theme: PARAMS.THEME.DARK,\n     width: 1000,\n     // autoHideMenuBar: true,\n     frame:false,\n"
+                },
+                {
+                    "date": 1665195290495,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,16 +62,16 @@\n   mainWindow = new MicaBrowserWindow({\n     height: 563,\n     useContentSize: true,\n     effect: EFFECT.BACKGROUND.MICA,\n-    theme: PARAMS.THEME.DARK,\n+    theme: PARAMS.THEME.LIGHT,\n     width: 1000,\n     // autoHideMenuBar: true,\n     frame:false,\n     // transparent:true\n   })\n \n-  mainWindow.setVisualEffect(EFFECT.CORNER, PARAMS.CORNER.ROUNDSMALL);\n+  mainWindow.setVisualEffect(EFFECT.CORNER, 10);\n \n   mainWindow.loadURL(winURL)\n \n   ipcMain.on('window-min',()=>{\n"
                 }
             ],
             "date": 1664529723430,
