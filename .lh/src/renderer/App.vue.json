@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 77,
+            "activePatchIndex": 86,
             "patches": [
                 {
                     "date": 1664529868211,
@@ -316,6 +316,42 @@
                 {
                     "date": 1665194229792,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -131,9 +131,9 @@\n   padding: 0;\n   user-select: none;\n }\n .head-bar {\n-  height: 33px;\n+  height: 50px;\n   /* background: #fff; */\n   width: 100%;\n   display: flex;\n   position: fixed;\n"
+                },
+                {
+                    "date": 1665196012150,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -174,5 +174,8 @@\n }\n .el-menu::-webkit-scrollbar{\n   width: 0;\n }\n+.el-menu{\n+  background-color: none;\n+}\n </style>\n"
+                },
+                {
+                    "date": 1665196036409,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -175,7 +175,7 @@\n .el-menu::-webkit-scrollbar{\n   width: 0;\n }\n .el-menu{\n-  background-color: none;\n+  background-color: unset;\n }\n </style>\n"
+                },
+                {
+                    "date": 1665196059675,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -175,7 +175,7 @@\n .el-menu::-webkit-scrollbar{\n   width: 0;\n }\n .el-menu{\n-  background-color: unset;\n+  background-color: transparent;\n }\n </style>\n"
+                },
+                {
+                    "date": 1665196090752,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -174,8 +174,8 @@\n }\n .el-menu::-webkit-scrollbar{\n   width: 0;\n }\n-.el-menu{\n-  background-color: transparent;\n+/deep/.el-menu{\n+  background-color: unset;\n }\n </style>\n"
+                },
+                {
+                    "date": 1665196103049,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -174,8 +174,8 @@\n }\n .el-menu::-webkit-scrollbar{\n   width: 0;\n }\n-/deep/.el-menu{\n+.el-menu{\n   background-color: unset;\n }\n </style>\n"
+                },
+                {
+                    "date": 1665196111175,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -175,7 +175,7 @@\n .el-menu::-webkit-scrollbar{\n   width: 0;\n }\n .el-menu{\n-  background-color: unset;\n+  background-color: unset!important;\n }\n </style>\n"
+                },
+                {
+                    "date": 1665196158827,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -177,5 +177,8 @@\n }\n .el-menu{\n   background-color: unset!important;\n }\n+.el-main{\n+  padding: 0;\n+}\n </style>\n"
+                },
+                {
+                    "date": 1665196166261,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -178,7 +178,7 @@\n .el-menu{\n   background-color: unset!important;\n }\n .el-main{\n-  padding: 0;\n+  padding: 0!important;\n }\n </style>\n"
+                },
+                {
+                    "date": 1665196191317,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,14 @@\n <template>\n   <div id=\"app\">\n-    <div class=\"head-bar\">\n+    <!-- <div class=\"head-bar\">\n       <div class=\"drag\"></div>\n       <div class=\"func\">\n         <div class=\"window-btn minimize\" @click=\"minimizeMin\"></div>\n         <div class=\"window-btn maximize\" @click=\"maximizeMin\"></div>\n         <div class=\"window-btn close\" @click=\"closeMin\"></div>\n       </div>\n-    </div>\n+    </div> -->\n     <el-container style=\"height: 100vh\">\n       <el-header style=\"text-align: right; font-size: 12px\" height=\"50px\">\n         <!-- <el-dropdown>\n           <i class=\"el-icon-setting\" style=\"margin-right: 15px\"></i>\n"
                 }
             ],
             "date": 1664529868211,
