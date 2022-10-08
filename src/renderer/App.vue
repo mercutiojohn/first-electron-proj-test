@@ -9,8 +9,8 @@
       </div>
     </div>
     <el-container style="height: 100vh">
-      <el-header style="text-align: right; font-size: 12px">
-        <el-dropdown>
+      <el-header style="text-align: right; font-size: 12px" height="50px">
+        <!-- <el-dropdown>
           <i class="el-icon-setting" style="margin-right: 15px"></i>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>查看</el-dropdown-item>
@@ -18,12 +18,12 @@
             <el-dropdown-item>删除</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-        <span>王小虎</span>
+        <span>王小虎</span> -->
       </el-header>
 
       <el-container>
-        <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-          <el-menu :default-openeds="['1', '3']">
+        <el-aside width="200px" style="">
+          <el-menu :default-openeds="['1', '3']" style="min-height:100%">
             <el-submenu index="1">
               <template slot="title"
                 ><i class="el-icon-message"></i>导航一</template
@@ -125,8 +125,14 @@ export default {
 </script>
 <style>
 /* CSS */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
 .head-bar {
-  height: 33px;
+  height: 50px;
   /* background: #fff; */
   width: 100%;
   display: flex;
@@ -158,11 +164,15 @@ export default {
   background: #646464;
 }
 .el-header {
-  background-color: #b3c0d1;
+  /* background-color: #b3c0d1; */
+  border-bottom: 1px solid #eee;
   color: #333;
   line-height: 60px;
 }
 .el-aside {
   color: #333;
+}
+.el-menu::-webkit-scrollbar{
+  width: 0;
 }
 </style>

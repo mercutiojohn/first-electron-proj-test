@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/renderer/components/LandingPage.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1665194019747,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1665194019747,
+            "name": "Commit-0",
+            "content": "<template>\n  <div id=\"wrapper\">\n    <img id=\"logo\" src=\"~@/assets/logo.png\" alt=\"electron-vue\">\n    <main>\n      <div class=\"left-side\">\n        <span class=\"title\">\n          Welcome to your new project!\n        </span>\n        <system-information></system-information>\n      </div>\n\n      <div class=\"right-side\">\n        <div class=\"doc\">\n          <div class=\"title\">Getting Started</div>\n          <p>\n            electron-vue comes packed with detailed documentation that covers everything from\n            internal configurations, using the project structure, building your application,\n            and so much more.\n          </p>\n          <button @click=\"open('https://simulatedgreg.gitbooks.io/electron-vue/content/')\">Read the Docs</button><br><br>\n        </div>\n        <div class=\"doc\">\n          <div class=\"title alt\">Other Documentation</div>\n          <button class=\"alt\" @click=\"open('https://electron.atom.io/docs/')\">Electron</button>\n          <button class=\"alt\" @click=\"open('https://vuejs.org/v2/guide/')\">Vue.js</button>\n        </div>\n      </div>\n    </main>\n  </div>\n</template>\n\n<script>\n  import SystemInformation from './LandingPage/SystemInformation'\n\n  export default {\n    name: 'landing-page',\n    components: { SystemInformation },\n    methods: {\n      open (link) {\n        this.$electron.shell.openExternal(link)\n      }\n    }\n  }\n</script>\n\n<style>\n  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');\n\n  body { font-family: 'Source Sans Pro', sans-serif; }\n\n  #wrapper {\n    background:\n      radial-gradient(\n        ellipse at top left,\n        rgba(255, 255, 255, 1) 40%,\n        rgba(229, 229, 229, .9) 100%\n      );\n    height: 100vh;\n    padding: 60px 80px;\n    width: 100vw;\n  }\n\n  #logo {\n    height: auto;\n    margin-bottom: 20px;\n    width: 420px;\n  }\n\n  main {\n    display: flex;\n    justify-content: space-between;\n  }\n\n  main > div { flex-basis: 50%; }\n\n  .left-side {\n    display: flex;\n    flex-direction: column;\n  }\n\n  .welcome {\n    color: #555;\n    font-size: 23px;\n    margin-bottom: 10px;\n  }\n\n  .title {\n    color: #2c3e50;\n    font-size: 20px;\n    font-weight: bold;\n    margin-bottom: 6px;\n  }\n\n  .title.alt {\n    font-size: 18px;\n    margin-bottom: 10px;\n  }\n\n  .doc p {\n    color: black;\n    margin-bottom: 10px;\n  }\n\n  .doc button {\n    font-size: .8em;\n    cursor: pointer;\n    outline: none;\n    padding: 0.75em 2em;\n    border-radius: 2em;\n    display: inline-block;\n    color: #fff;\n    background-color: #4fc08d;\n    transition: all 0.15s ease;\n    box-sizing: border-box;\n    border: 1px solid #4fc08d;\n  }\n\n  .doc button.alt {\n    color: #42b983;\n    background-color: transparent;\n  }\n</style>\n"
+        }
+    ]
+}

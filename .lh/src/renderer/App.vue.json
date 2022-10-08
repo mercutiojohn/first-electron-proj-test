@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 54,
+            "activePatchIndex": 77,
             "patches": [
                 {
                     "date": 1664529868211,
@@ -224,6 +224,98 @@
                 {
                     "date": 1665192964324,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -79,15 +79,15 @@\n         </el-aside>\n \n         <el-main>\n           <router-view></router-view>\n-          <el-table :data=\"tableData\">\n+          <!-- <el-table :data=\"tableData\">\n             <el-table-column prop=\"date\" label=\"日期\" width=\"140\">\n             </el-table-column>\n             <el-table-column prop=\"name\" label=\"姓名\" width=\"120\">\n             </el-table-column>\n             <el-table-column prop=\"address\" label=\"地址\"> </el-table-column>\n-          </el-table>\n+          </el-table> -->\n         </el-main>\n       </el-container>\n     </el-container>\n   </div>\n"
+                },
+                {
+                    "date": 1665193511026,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -162,7 +162,7 @@\n   color: #333;\n   line-height: 60px;\n }\n .el-aside {\n-  color: #333;\n+  color: #fff;\n }\n </style>\n"
+                },
+                {
+                    "date": 1665193526585,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -162,7 +162,7 @@\n   color: #333;\n   line-height: 60px;\n }\n .el-aside {\n-  color: #fff;\n+  color: #333;\n }\n </style>\n"
+                },
+                {
+                    "date": 1665193551206,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n         <span>王小虎</span>\n       </el-header>\n \n       <el-container>\n-        <el-aside width=\"200px\" style=\"background-color: rgb(238, 241, 246)\">\n+        <el-aside width=\"200px\" style=\"\">\n           <el-menu :default-openeds=\"['1', '3']\">\n             <el-submenu index=\"1\">\n               <template slot=\"title\"\n                 ><i class=\"el-icon-message\"></i>导航一</template\n"
+                },
+                {
+                    "date": 1665193572387,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n       </el-header>\n \n       <el-container>\n         <el-aside width=\"200px\" style=\"\">\n-          <el-menu :default-openeds=\"['1', '3']\">\n+          <el-menu :default-openeds=\"['1', '3']\" style=\"height:100%\">\n             <el-submenu index=\"1\">\n               <template slot=\"title\"\n                 ><i class=\"el-icon-message\"></i>导航一</template\n               >\n"
+                },
+                {
+                    "date": 1665193592165,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n       </el-header>\n \n       <el-container>\n         <el-aside width=\"200px\" style=\"\">\n-          <el-menu :default-openeds=\"['1', '3']\" style=\"height:100%\">\n+          <el-menu :default-openeds=\"['1', '3']\" style=\"height:calc(100% - 1px)\">\n             <el-submenu index=\"1\">\n               <template slot=\"title\"\n                 ><i class=\"el-icon-message\"></i>导航一</template\n               >\n"
+                },
+                {
+                    "date": 1665193598507,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n       </el-header>\n \n       <el-container>\n         <el-aside width=\"200px\" style=\"\">\n-          <el-menu :default-openeds=\"['1', '3']\" style=\"height:calc(100% - 1px)\">\n+          <el-menu :default-openeds=\"['1', '3']\" style=\"height:calc(100% - 10px)\">\n             <el-submenu index=\"1\">\n               <template slot=\"title\"\n                 ><i class=\"el-icon-message\"></i>导航一</template\n               >\n"
+                },
+                {
+                    "date": 1665193619396,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n       </el-header>\n \n       <el-container>\n         <el-aside width=\"200px\" style=\"\">\n-          <el-menu :default-openeds=\"['1', '3']\" style=\"height:calc(100% - 10px)\">\n+          <el-menu :default-openeds=\"['1', '3']\" style=\"height:calc(100%);overfloe:hidden;\">\n             <el-submenu index=\"1\">\n               <template slot=\"title\"\n                 ><i class=\"el-icon-message\"></i>导航一</template\n               >\n"
+                },
+                {
+                    "date": 1665193630083,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n       </el-header>\n \n       <el-container>\n         <el-aside width=\"200px\" style=\"\">\n-          <el-menu :default-openeds=\"['1', '3']\" style=\"height:calc(100%);overfloe:hidden;\">\n+          <el-menu :default-openeds=\"['1', '3']\" style=\"height:calc(100%);overflow:hidden;\">\n             <el-submenu index=\"1\">\n               <template slot=\"title\"\n                 ><i class=\"el-icon-message\"></i>导航一</template\n               >\n"
+                },
+                {
+                    "date": 1665193641952,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n       </el-header>\n \n       <el-container>\n         <el-aside width=\"200px\" style=\"\">\n-          <el-menu :default-openeds=\"['1', '3']\" style=\"height:calc(100%);overflow:hidden;\">\n+          <el-menu :default-openeds=\"['1', '3']\" style=\"height:calc(100%);overflow-y:scroll;\">\n             <el-submenu index=\"1\">\n               <template slot=\"title\"\n                 ><i class=\"el-icon-message\"></i>导航一</template\n               >\n"
+                },
+                {
+                    "date": 1665193658563,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n       </el-header>\n \n       <el-container>\n         <el-aside width=\"200px\" style=\"\">\n-          <el-menu :default-openeds=\"['1', '3']\" style=\"height:calc(100%);overflow-y:scroll;\">\n+          <el-menu :default-openeds=\"['1', '3']\" style=\"height:calc(100%)\">\n             <el-submenu index=\"1\">\n               <template slot=\"title\"\n                 ><i class=\"el-icon-message\"></i>导航一</template\n               >\n"
+                },
+                {
+                    "date": 1665193666968,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n       </el-header>\n \n       <el-container>\n         <el-aside width=\"200px\" style=\"\">\n-          <el-menu :default-openeds=\"['1', '3']\" style=\"height:calc(100%)\">\n+          <el-menu :default-openeds=\"['1', '3']\" style=\"min-height:calc(100%)\">\n             <el-submenu index=\"1\">\n               <template slot=\"title\"\n                 ><i class=\"el-icon-message\"></i>导航一</template\n               >\n"
+                },
+                {
+                    "date": 1665193729769,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n       </el-header>\n \n       <el-container>\n         <el-aside width=\"200px\" style=\"\">\n-          <el-menu :default-openeds=\"['1', '3']\" style=\"min-height:calc(100%)\">\n+          <el-menu :default-openeds=\"['1', '3']\" style=\"min-height:100%\">\n             <el-submenu index=\"1\">\n               <template slot=\"title\"\n                 ><i class=\"el-icon-message\"></i>导航一</template\n               >\n@@ -164,5 +164,8 @@\n }\n .el-aside {\n   color: #333;\n }\n+.el-menu::-webkit-scrollbar{\n+width: 0;\n+}\n </style>\n"
+                },
+                {
+                    "date": 1665193750751,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -165,7 +165,7 @@\n .el-aside {\n   color: #333;\n }\n .el-menu::-webkit-scrollbar{\n-width: 0;\n+  width: 0;\n }\n </style>\n"
+                },
+                {
+                    "date": 1665193963780,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -124,8 +124,13 @@\n };\n </script>\n <style>\n /* CSS */\n+* {\n+    box-sizing: border-box;\n+    margin: 0;\n+    padding: 0;\n+  }\n .head-bar {\n   height: 33px;\n   /* background: #fff; */\n   width: 100%;\n"
+                },
+                {
+                    "date": 1665193973684,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -125,12 +125,13 @@\n </script>\n <style>\n /* CSS */\n * {\n-    box-sizing: border-box;\n-    margin: 0;\n-    padding: 0;\n-  }\n+  box-sizing: border-box;\n+  margin: 0;\n+  padding: 0;\n+  user-select: none;\n+}\n .head-bar {\n   height: 33px;\n   /* background: #fff; */\n   width: 100%;\n"
+                },
+                {
+                    "date": 1665194038646,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -163,9 +163,9 @@\n .head-bar .func .window-btn:active {\n   background: #646464;\n }\n .el-header {\n-  background-color: #b3c0d1;\n+  /* background-color: #b3c0d1; */\n   color: #333;\n   line-height: 60px;\n }\n .el-aside {\n"
+                },
+                {
+                    "date": 1665194061275,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -164,8 +164,9 @@\n   background: #646464;\n }\n .el-header {\n   /* background-color: #b3c0d1; */\n+  border-bottom: 1px solid #eee;\n   color: #333;\n   line-height: 60px;\n }\n .el-aside {\n"
+                },
+                {
+                    "date": 1665194080510,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,17 +9,17 @@\n       </div>\n     </div>\n     <el-container style=\"height: 100vh\">\n       <el-header style=\"text-align: right; font-size: 12px\">\n-        <el-dropdown>\n+        <!-- <el-dropdown>\n           <i class=\"el-icon-setting\" style=\"margin-right: 15px\"></i>\n           <el-dropdown-menu slot=\"dropdown\">\n             <el-dropdown-item>查看</el-dropdown-item>\n             <el-dropdown-item>新增</el-dropdown-item>\n             <el-dropdown-item>删除</el-dropdown-item>\n           </el-dropdown-menu>\n         </el-dropdown>\n-        <span>王小虎</span>\n+        <span>王小虎</span> -->\n       </el-header>\n \n       <el-container>\n         <el-aside width=\"200px\" style=\"\">\n"
+                },
+                {
+                    "date": 1665194155508,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -166,9 +166,9 @@\n .el-header {\n   /* background-color: #b3c0d1; */\n   border-bottom: 1px solid #eee;\n   color: #333;\n-  line-height: 60px;\n+  line-height: 33px;\n }\n .el-aside {\n   color: #333;\n }\n"
+                },
+                {
+                    "date": 1665194167798,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -166,9 +166,9 @@\n .el-header {\n   /* background-color: #b3c0d1; */\n   border-bottom: 1px solid #eee;\n   color: #333;\n-  line-height: 33px;\n+  line-height: 60px;\n }\n .el-aside {\n   color: #333;\n }\n"
+                },
+                {
+                    "date": 1665194196084,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n         <div class=\"window-btn close\" @click=\"closeMin\"></div>\n       </div>\n     </div>\n     <el-container style=\"height: 100vh\">\n-      <el-header style=\"text-align: right; font-size: 12px\">\n+      <el-header style=\"text-align: right; font-size: 12px\" height=\"33px\">\n         <!-- <el-dropdown>\n           <i class=\"el-icon-setting\" style=\"margin-right: 15px\"></i>\n           <el-dropdown-menu slot=\"dropdown\">\n             <el-dropdown-item>查看</el-dropdown-item>\n"
+                },
+                {
+                    "date": 1665194213095,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n         <div class=\"window-btn close\" @click=\"closeMin\"></div>\n       </div>\n     </div>\n     <el-container style=\"height: 100vh\">\n-      <el-header style=\"text-align: right; font-size: 12px\" height=\"33px\">\n+      <el-header style=\"text-align: right; font-size: 12px\" height=\"50px\">\n         <!-- <el-dropdown>\n           <i class=\"el-icon-setting\" style=\"margin-right: 15px\"></i>\n           <el-dropdown-menu slot=\"dropdown\">\n             <el-dropdown-item>查看</el-dropdown-item>\n"
+                },
+                {
+                    "date": 1665194229792,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -131,9 +131,9 @@\n   padding: 0;\n   user-select: none;\n }\n .head-bar {\n-  height: 33px;\n+  height: 50px;\n   /* background: #fff; */\n   width: 100%;\n   display: flex;\n   position: fixed;\n"
                 }
             ],
             "date": 1664529868211,
