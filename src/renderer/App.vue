@@ -23,42 +23,12 @@
 
       <el-container>
         <el-aside width="200px" style="">
-          <el-menu :default-openeds="['1', '3']" style="min-height:100%">
-            <el-submenu index="1">
-              <template slot="title"
-                ><i class="el-icon-message"></i>导航一</template
-              >
-              <el-menu-item-group>
-                <template slot="title">分组一</template>
-                <el-menu-item index="1-1">选项1</el-menu-item>
-                <el-menu-item index="1-2">选项2</el-menu-item>
-              </el-menu-item-group>
-              <el-menu-item-group title="分组2">
-                <el-menu-item index="1-3">选项3</el-menu-item>
-              </el-menu-item-group>
-              <el-submenu index="1-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="1-4-1">选项4-1</el-menu-item>
-              </el-submenu>
-            </el-submenu>
+          <el-menu :default-openeds="['1', '3']" style="min-height: 100%">
+            <el-menu-item index="1">
+              <i class="el-icon-document"></i>
+              <span slot="title">导航1</span>
+            </el-menu-item>
             <el-submenu index="2">
-              <template slot="title"
-                ><i class="el-icon-menu"></i>导航二</template
-              >
-              <el-menu-item-group>
-                <template slot="title">分组一</template>
-                <el-menu-item index="2-1">选项1</el-menu-item>
-                <el-menu-item index="2-2">选项2</el-menu-item>
-              </el-menu-item-group>
-              <el-menu-item-group title="分组2">
-                <el-menu-item index="2-3">选项3</el-menu-item>
-              </el-menu-item-group>
-              <el-submenu index="2-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="2-4-1">选项4-1</el-menu-item>
-              </el-submenu>
-            </el-submenu>
-            <el-submenu index="3">
               <template slot="title"
                 ><i class="el-icon-setting"></i>导航三</template
               >
@@ -124,6 +94,30 @@ export default {
 };
 </script>
 <style>
+#app {
+  font-family: Avenir,'Microsoft Yahei', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* text-align: center; */
+  color: #2c3e50;
+  /* background:#eee; */
+  min-height: 100vh;
+}
+input, textarea, select, button,.el-select-dropdown__empty,.el-picker-panel{
+  font-family: Avenir,'Microsoft Yahei', Helvetica, Arial, sans-serif;
+}
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #409eff;
+}
 /* CSS */
 * {
   box-sizing: border-box;
@@ -165,20 +159,24 @@ export default {
 }
 .el-header {
   /* background-color: #b3c0d1; */
-  border-bottom: 1px solid #eee;
+  /* border-bottom: 1px solid #eee; */
   color: #333;
   line-height: 60px;
 }
 .el-aside {
   color: #333;
 }
-.el-menu::-webkit-scrollbar{
+.el-menu::-webkit-scrollbar {
   width: 0;
 }
-.el-menu{
-  background-color: unset!important;
+.el-menu {
+  background-color: unset !important;
+  border-right: none !important;
 }
-.el-main{
-  padding: 0!important;
+.el-main {
+  padding: 0 !important;
+  border-radius: 10px 0 0 0;
+  border-top: 1px solid #e6e6e6;
+  border-left: 1px solid #e6e6e6;
 }
 </style>
