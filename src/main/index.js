@@ -60,8 +60,8 @@ function createWindow () {
    * Initial window options
    */
   mainWindow = new MicaBrowserWindow({
-    width: 1000,
-    height: 563,
+    width: 1260,
+    height: 700,
     useContentSize: true,
     effect: EFFECT.BACKGROUND.MICA,
     // effect: EFFECT.BACKGROUND.MICA,

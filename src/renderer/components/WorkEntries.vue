@@ -750,7 +750,7 @@ export default {
 
 <style scoped>
 .work-log {
-  background: rgba(255, 255, 255, 0.534);
+  /* background: rgba(255, 255, 255, 0.534); */
   padding: 0 0 100px 0;
 }
 .nav-title {

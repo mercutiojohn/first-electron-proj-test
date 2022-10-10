@@ -29,38 +29,47 @@
           }"
         >
           <el-button
-            :class="{'expand-btn':true,'collapse':isCollapse}"
+            :class="{ 'expand-btn': true, collapse: isCollapse }"
             type="plain"
             size="small"
             icon="el-icon-s-fold"
             @click="isCollapse = !isCollapse"
+            router="true"
           ></el-button>
           <el-menu
             class="main-menu"
             :default-openeds="['1', '3']"
             style="min-height: calc(100% - 50px)"
             :collapse="isCollapse"
+            collapse-transition="false"
           >
-            <el-menu-item index="1">
-              <i class="el-icon-document"></i>
-              <span slot="title">导航1</span>
-            </el-menu-item>
+            <router-link to="/">
+              <el-menu-item index="/" route="/">
+                <i class="el-icon-document"></i>
+                <span slot="title">快捷入口</span>
+              </el-menu-item>
+            </router-link>
+            <router-link to="/about">
+              <el-menu-item index="/about" :route="'/about'">
+                <i class="el-icon-info"></i>
+                <span slot="title">关于</span>
+              </el-menu-item>
+            </router-link>
             <el-submenu index="2">
-              <template slot="title"
-                ><i class="el-icon-setting"></i><span slot="title">导航三</span></template
-              >
+              <template slot="title">
+                <i class="el-icon-setting"></i>
+                <span slot="title">设置</span>
+              </template>
               <el-menu-item-group>
                 <template slot="title">分组一</template>
-                <el-menu-item index="3-1">选项1</el-menu-item>
+                <router-link to="/about">
+                  <el-menu-item index="3-1">gy</el-menu-item></router-link
+                >
                 <el-menu-item index="3-2">选项2</el-menu-item>
               </el-menu-item-group>
               <el-menu-item-group title="分组2">
                 <el-menu-item index="3-3">选项3</el-menu-item>
               </el-menu-item-group>
-              <el-submenu index="3-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="3-4-1">选项4-1</el-menu-item>
-              </el-submenu>
             </el-submenu>
           </el-menu>
         </el-aside>
@@ -197,30 +206,28 @@ nav a.router-link-exact-active {
   background-color: unset !important;
   border-right: none !important;
 }
-.el-menu--popup{
+.el-menu--popup {
   background: #fafafa !important;
-  border-radius: 10px!important;
-  border: 1px solid #eee!important;
-  box-shadow: 0 12px 20px 1px rgba(0, 0, 0, 0.081)!important;
+  border-radius: 10px !important;
+  border: 1px solid #eee !important;
+  box-shadow: 0 12px 20px 1px rgba(0, 0, 0, 0.081) !important;
   /* backdrop-filter: blur(100px); */
 }
 .el-main {
+  background: rgba(255, 255, 255, 0.534);
   padding: 0 !important;
   border-radius: 10px 0 0 0;
-  border-top: 1px solid #e6e6e6;
-  border-left: 1px solid #e6e6e6;
+  border-top: 1px solid rgba(0, 0, 0, 0.067);
+  border-left: 1px solid rgba(0, 0, 0, 0.067);
+  overflow: hidden;
 }
 .el-menu--collapse .el-menu-item .el-tooltip,
-.el-menu--collapse .el-submenu__title{
+.el-menu--collapse .el-submenu__title {
   /* padding: 0 7.5px!important; */
-  padding: 0 15px!important;
+  padding: 0 15px !important;
 }
 .el-menu-item i,
 .el-submenu__title i {
-  color: #000 !important;
-}
-.el-menu-item,
-.el-menu-item.is-active {
   color: #000 !important;
 }
 .el-menu-item,
@@ -237,6 +244,9 @@ nav a.router-link-exact-active {
 .el-submenu .el-menu-item {
   padding: 0 calc(35px - 2.5px) !important;
 }
+.el-menu-item.is-active {
+  background: rgba(0, 0, 0, 0.052) !important;
+}
 .el-menu-item:focus,
 .el-menu-item:hover,
 .el-submenu__title:hover,
@@ -247,22 +257,23 @@ nav a.router-link-exact-active {
 .expand-btn {
   margin-left: 5px !important;
   background: transparent !important;
-  border: none!important;
+  border: none !important;
   padding: 9px 10px !important;
   font-size: 12px;
-  border-radius: 5px!important;
+  border-radius: 5px !important;
 }
-.expand-btn.collapse{
+.expand-btn.collapse {
   padding: 9px 15px !important;
 }
-.expand-btn:hover{
+.expand-btn:hover {
   background: rgba(0, 0, 0, 0.052) !important;
 }
 .expand-btn i {
   font-size: 20px;
   color: #000;
 }
-.el-menu--vertical{
-  
+a, a.router-link-active, a.router-link-exact-active{
+  text-decoration: none;
 }
+
 </style>
