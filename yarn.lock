@@ -5532,7 +5532,7 @@ methods@~1.1.2:
   resolved "https://registry.npmmirror.com/methods/-/methods-1.1.2.tgz"
   integrity sha512-iclAHeNqNm68zFtnZ0e+1L2yUIdvzNoauKU4WBA3VvH/vPFieF7qfRlwUZU+DA9P9bPXIS90ulxoUoCH23sV2w==
 
-mica-electron@^1.0.7:
+mica-electron@^1.0.9:
   version "1.0.9"
   resolved "https://registry.npmmirror.com/mica-electron/-/mica-electron-1.0.9.tgz#9304b0e3eabaf60ae6a47ff21127d27c41e457e2"
   integrity sha512-x+Tpyo9w1byJVQByoqO5uiPjMqmom3bD2R9V6RY3DEYaa3TH+iHCGVu+D/5QspWKxYOXFzUK3WfYLq5fvpE7yA==
