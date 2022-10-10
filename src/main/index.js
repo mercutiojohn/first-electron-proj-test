@@ -1,5 +1,5 @@
 import { app, BrowserWindow, ipcMain } from 'electron'
-import { EFFECT, PARAMS, MicaBrowserWindow } from 'mica-electron'
+// import { EFFECT, PARAMS, MicaBrowserWindow } from 'mica-electron'
 import '../renderer/store'
 
 /**
@@ -59,15 +59,16 @@ function createWindow () {
   /**
    * Initial window options
    */
-  mainWindow = new MicaBrowserWindow({
+  // mainWindow = new MicaBrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 1260,
     height: 700,
     useContentSize: true,
-    effect: EFFECT.BACKGROUND.MICA,
     // effect: EFFECT.BACKGROUND.MICA,
-    theme: PARAMS.THEME.LIGHT,
+    // effect: EFFECT.BACKGROUND.MICA,
+    // theme: PARAMS.THEME.LIGHT,
     autoHideMenuBar: true,
-    // frame:false,
+    frame:false,
     show:false
     // transparent:true
   })

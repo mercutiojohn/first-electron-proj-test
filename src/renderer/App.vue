@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <!-- <div class="head-bar">
+    <div class="head-bar">
       <div class="drag"></div>
       <div class="func">
         <div class="window-btn minimize" @click="minimizeMin"></div>
         <div class="window-btn maximize" @click="maximizeMin"></div>
         <div class="window-btn close" @click="closeMin"></div>
       </div>
-    </div> -->
+    </div>
     <el-container style="height: 100vh">
       <el-header style="text-align: left; font-size: 12px" height="50px">
         <!-- <el-dropdown>
