@@ -14,7 +14,7 @@
     "pack": "npm run pack:main && npm run pack:renderer",
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
-    "postinstall": ""
+    "postinstall": "electron-builder install-app-deps"
   },
   "build": {
     "productName": "first-electron-proj",
@@ -53,9 +53,10 @@
   "dependencies": {
     "axios": "^0.18.0",
     "element-ui": "^2.15.10",
-    "mica-electron": "^1.0.7",
+    "mica-electron": "^1.0.9",
     "multispinner": "^0.2.1",
     "polyfill-object.fromentries": "^1.0.1",
+    "svgtofont": "^3.20.0",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",
@@ -82,6 +83,7 @@
     "electron-builder": "^20.19.2",
     "electron-debug": "^1.5.0",
     "electron-devtools-installer": "^2.2.4",
+    "electron-rebuild": "^3.2.9",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "listr": "^0.14.3",
