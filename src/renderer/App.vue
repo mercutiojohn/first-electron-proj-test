@@ -3,9 +3,16 @@
     <div class="head-bar">
       <div class="drag"></div>
       <div class="func">
-        <div class="window-btn minimize" @click="minimizeMin"></div>
-        <div class="window-btn maximize" @click="maximizeMin"></div>
-        <div class="window-btn close" @click="closeMin"></div>
+        <div class="window-btn minimize" @click="minimizeMin">
+          <i class="fluent-icon window-ctrl-icon">&#xE921;</i>
+        </div>
+        <div class="window-btn maximize" @click="maximizeMin">
+          <i class="fluent-icon window-ctrl-icon" v-if="windowMaxed">&#xE923;</i>
+          <i class="fluent-icon window-ctrl-icon" v-else>&#xE922;</i>
+        </div>
+        <div class="window-btn close" @click="closeMin">
+          <i class="fluent-icon window-ctrl-icon">&#xE8bb;</i>
+        </div>
       </div>
     </div>
     <el-container style="height: 100vh">
@@ -32,10 +39,11 @@
             :class="{ 'expand-btn': true, collapse: isCollapse }"
             type="plain"
             size="small"
-            icon="el-icon-s-fold"
             @click="isCollapse = !isCollapse"
             router="true"
-          ></el-button>
+          >
+          <i :class="{ 'fluent-icon': true, uncollapse: !isCollapse }">&#xE700;</i>
+          </el-button>
           <el-menu
             class="main-menu"
             :default-openeds="['1', '3']"
@@ -116,8 +124,17 @@ export default {
     return {
       tableData: Array(20).fill(item),
       isCollapse: false,
+      windowMaxed:false
     };
   },
+  created(){
+    ipcRenderer.on('main-window-max', (event) => {
+      this.windowMaxed = true;
+    });
+    ipcRenderer.on('main-window-unmax', (event) => {
+      this.windowMaxed = false;
+    });
+  }
 };
 </script>
 <style>
@@ -127,7 +144,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
   color: #2c3e50;
-  /* background:#eee; */
+  background:#f3f3f3;
   min-height: 100vh;
 }
 input,
@@ -168,6 +185,8 @@ nav a.router-link-exact-active {
   left: 0;
 }
 .head-bar .drag {
+  position: relative;
+  top:2px;
   width: calc(100vw - 130px);
   -webkit-app-region: drag;
   -webkit-user-select: none;
@@ -178,17 +197,27 @@ nav a.router-link-exact-active {
 }
 .head-bar .func .window-btn {
   /* background: #000; */
-  border: 1px solid #000;
   width: calc(130px / 3);
   height: 100%;
   cursor: pointer;
   transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
 }
 .head-bar .func .window-btn:hover {
   background: #cecece;
 }
 .head-bar .func .window-btn:active {
   background: #646464;
+}
+.head-bar .func .window-btn.close:hover {
+  background: #c42b1c;
+  color: #fff;
+}
+.head-bar .func .window-btn.close:active {
+  background: #c53d30;
 }
 .el-header {
   /* background-color: #b3c0d1; */
@@ -269,11 +298,17 @@ nav a.router-link-exact-active {
   background: rgba(0, 0, 0, 0.052) !important;
 }
 .expand-btn i {
-  font-size: 20px;
+  padding: 5px;
+  font-size: 15px;
   color: #000;
+}
+.expand-btn i.uncollapse{
+  padding: 0;
 }
 a, a.router-link-active, a.router-link-exact-active{
   text-decoration: none;
 }
-
+.window-ctrl-icon{
+  font-size: 10px!important;
+}
 </style>

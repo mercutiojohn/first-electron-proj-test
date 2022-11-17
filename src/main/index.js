@@ -7,7 +7,7 @@ import '../renderer/store'
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
  */
 if (process.env.NODE_ENV !== 'development') {
-  global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
+    global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
 }
 
 // const EFFECT = {
@@ -51,64 +51,72 @@ if (process.env.NODE_ENV !== 'development') {
 app.commandLine.appendSwitch("enable-transparent-visuals")
 
 let mainWindow
-const winURL = process.env.NODE_ENV === 'development'
-  ? `http://localhost:9080`
-  : `file://${__dirname}/index.html`
+const winURL = process.env.NODE_ENV === 'development' ?
+    `http://localhost:9080` :
+    `file://${__dirname}/index.html`
 
-function createWindow () {
-  /**
-   * Initial window options
-   */
-  // mainWindow = new MicaBrowserWindow({
-  mainWindow = new BrowserWindow({
-    width: 1260,
-    height: 700,
-    useContentSize: true,
-    // effect: EFFECT.BACKGROUND.MICA,
-    // effect: EFFECT.BACKGROUND.MICA,
-    // theme: PARAMS.THEME.LIGHT,
-    autoHideMenuBar: true,
-    frame:false,
-    show:false
-    // transparent:true
-  })
+function createWindow() {
+    /**
+     * Initial window options
+     */
+    // mainWindow = new MicaBrowserWindow({
+    mainWindow = new BrowserWindow({
+        width: 1260,
+        height: 700,
+        useContentSize: true,
+        // effect: EFFECT.BACKGROUND.MICA,
+        // effect: EFFECT.BACKGROUND.MICA,
+        // theme: PARAMS.THEME.LIGHT,
+        autoHideMenuBar: true,
+        frame: false,
+        show: false
+            // transparent:true
+    })
 
-  // mainWindow.setVisualEffect(EFFECT.CORNER, 10);
-  // mainWindow.setVisualEffect(EFFECT.CORNER, PARAMS.CORNER.ROUNDSMALL);
+    // mainWindow.setVisualEffect(EFFECT.CORNER, 10);
+    // mainWindow.setVisualEffect(EFFECT.CORNER, PARAMS.CORNER.ROUNDSMALL);
 
-  mainWindow.loadURL(winURL)
+    mainWindow.loadURL(winURL)
 
-  mainWindow.webContents.once('dom-ready', () => {
-    mainWindow.show();
-  });
+    mainWindow.webContents.once('dom-ready', () => {
+        mainWindow.show();
+    });
 
-  ipcMain.on('window-min',()=>{
-    mainWindow.minimize();
-  })
-  ipcMain.on('window-max', () => {
-    if(mainWindow.isMaximized()){
-      mainWindow.restore();
-    }else{
-      mainWindow.maximize();
-    }
-  })
-  ipcMain.on('window-close', () => {
-    mainWindow.close();
-  })
+    ipcMain.on('window-min', () => {
+        mainWindow.minimize();
+    })
+    ipcMain.on('window-max', () => {
+        if (mainWindow.isMaximized()) {
+            mainWindow.restore();
+        } else {
+            mainWindow.maximize();
+        }
+    })
+    ipcMain.on('window-close', () => {
+
+        mainWindow.close();
+    })
+
+    mainWindow.on('maximize', function() {
+        mainWindow.webContents.send('main-window-max');
+    })
+    mainWindow.on('unmaximize', function() {
+        mainWindow.webContents.send('main-window-unmax');
+    })
 }
 app.on('ready', createWindow)
 
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
+    if (process.platform !== 'darwin') {
+        app.quit()
+    }
 })
 
 app.on('activate', () => {
-  if (mainWindow === null) {
-    createWindow()
-  }
+    if (mainWindow === null) {
+        createWindow()
+    }
 })
 
 /**
